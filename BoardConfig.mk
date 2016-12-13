@@ -21,7 +21,7 @@
 #
 
 
-TARGET_OTA_ASSERT_DEVICE := z2,Z2,z2plus,z2_plus
+TARGET_OTA_ASSERT_DEVICE := z2,Z2,z2plus,z2_plus,z2121,z2131
 
 PLATFORM_PATH := device/zuk/z2_plus
 
@@ -58,6 +58,7 @@ ENABLE_CPUSETS := true
 TARGET_USES_64_BIT_BINDER := true
 
 # Kernel
+BOARD_CUSTOM_BOOTIMG_MK := $(PLATFORM_PATH)/mkbootimg.mk
 BOARD_KERNEL_CMDLINE := console=tty60,115200,n8 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 cma=16M@0-0xffffffff androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 4096
@@ -68,8 +69,11 @@ TARGET_KERNEL_APPEND_DTB := true
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
-TARGET_KERNEL_CONFIG := cyanogenmod_z2_plus_defconfig
-TARGET_KERNEL_SOURCE := kernel/zuk/msm8996
+#TARGET_KERNEL_CONFIG := cyanogenmod_z2_plus_defconfig
+#TARGET_KERNEL_SOURCE := kernel/zuk/msm8996
+TARGET_KERNEL_CONFIG := msm_defconfig
+TARGET_KERNEL_SOURCE := kernel/msm-3.18
+TARGET_PREBUILT_KERNEL := $(PLATFORM_PATH)/prebuilt/zImage
 
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
@@ -110,10 +114,13 @@ QCOM_BT_USE_SMD_TTY := true
 # Camera
 BOARD_QTI_CAMERA_32BIT_ONLY := true
 USE_DEVICE_SPECIFIC_CAMERA := true
+TARGET_CAMERA_APP := CameraGallery
 TARGET_HAS_LEGACY_CAMERA_HAL1 := true
+
 
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
+#BOARD_CHARGER_DISABLE_INIT_BLANK := true
 
 # CM Hardware
 BOARD_HARDWARE_CLASS += $(PLATFORM_PATH)/cmhw
@@ -145,13 +152,13 @@ VSYNC_EVENT_PHASE_OFFSET_NS := 2000000
 SF_VSYNC_EVENT_PHASE_OFFSET_NS := 6000000
 
 # Enable dexpreopt to speed boot time
-ifeq ($(HOST_OS),linux)
-  ifeq ($(call match-word-in-list,$(TARGET_BUILD_VARIANT),user),true)
-    ifeq ($(WITH_DEXPREOPT),)
-      WITH_DEXPREOPT := true
-    endif
-  endif
-endif
+#ifeq ($(HOST_OS),linux)
+#  ifeq ($(call match-word-in-list,$(TARGET_BUILD_VARIANT),user),true)
+#    ifeq ($(WITH_DEXPREOPT),)
+#      WITH_DEXPREOPT := true
+#    endif
+#  endif
+#endif
 
 # GPS
 TARGET_NO_RPC := true
@@ -198,7 +205,7 @@ TARGET_USERIMAGES_USE_F2FS := true
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
 
-BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
+#BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
 
 # Sensors
 USE_SENSOR_MULTI_HAL := true
@@ -210,11 +217,10 @@ BOARD_USES_QC_TIME_SERVICES := true
 BOARD_HAS_QCOM_WLAN := true
 BOARD_HAS_QCOM_WLAN_SDK := true
 BOARD_WLAN_DEVICE := qcwcn
-BOARD_WPA_SUPPLICANT_DRIVER := NL80211
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
 BOARD_HOSTAPD_DRIVER := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
-HOSTAPD_VERSION := VER_0_8_X
+BOARD_WPA_SUPPLICANT_DRIVER := NL80211
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
 WIFI_DRIVER_FW_PATH_AP := "ap"
 WIFI_DRIVER_FW_PATH_STA := "sta"
 WIFI_DRIVER_FW_PATH_P2P := "p2p"

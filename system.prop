@@ -44,6 +44,9 @@ persist.demo.hdmirotationlock=false
 #ro.hdmi.enable=true
 persist.speaker.prot.enable=true
 qcom.hw.aac.encoder=true
+
+persiste.android.strictmode=0
+
 #
 # system props for the cne module
 #
@@ -274,11 +277,13 @@ ro.min_freq_0=307200
 ro.min_freq_4=307200
 ro.sys.fw.bg_apps_limit=60
 
-media.stagefright.legacyencoder=true
-
 # Camera
 persist.camera.imglib.fddsp=1
 persist.camera.llc=1
 persist.camera.llnoise=1
-persist.camera.stats.test=0
-
+persist.camera.stats.test=5
+camera.hal1.packagelist=com.skype.raider,com.whatsapp,com.tencent.mm,com.google.android.GoogleCamera
+ 
+# HAX - remove ASAP
+media.stagefright.legacyencoder=true
+media.stagefright.less-secure=true

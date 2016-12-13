@@ -1,2 +1,1 @@
-add_lunch_combo cm_z2_plus-userdebug
-add_lunch_combo cm_z2_plus-eng
+add_lunch_combo aosp_z2_plus-userdebug

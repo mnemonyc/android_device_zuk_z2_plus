@@ -30,18 +30,26 @@
 
          Must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLevels">
+        <item>0</item>        <!-- pitch black -->
         <item>1</item>        <!-- pitch black -->
-        <item>11</item>       <!-- dark indoor -->
-        <item>25</item>       <!-- twilight -->
-        <item>50</item>       <!-- dim indoor -->
-        <item>100</item>      <!-- home -->
-        <item>200</item>
-        <item>300</item>      <!-- office -->
-        <item>500</item>      <!-- sunrise -->
-        <item>750</item>
-        <item>1000</item>     <!-- overcast -->
-        <item>5000</item>
-        <item>10000</item>    <!-- daylight -->
+        <item>6</item>        <!-- pitch black -->
+        <item>9</item>        <!-- pitch black -->
+        <item>14</item>       <!-- dark indoor -->
+        <item>20</item>
+        <item>30</item>       <!-- twilight -->
+        <item>46</item> 
+        <item>68</item>       <!-- dim indoor -->
+        <item>103</item>      <!-- home -->
+        <item>154</item>
+        <item>231</item>
+        <item>346</item>      <!-- office -->
+        <item>519</item>      <!-- sunrise -->
+        <item>778</item>
+        <item>1168</item>     <!-- overcast -->
+        <item>1752</item> 
+        <item>2627</item>
+        <item>3941</item>
+        <item>15000</item>    <!-- daylight -->
     </integer-array>
 
     <!-- Array of output values for LCD backlight corresponding to the LUX values
@@ -49,18 +57,25 @@
          than the size of the config_autoBrightnessLevels array.
          This must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLcdBacklightValues">
-        <item>7</item>
-        <item>12</item>
-        <item>17</item>
-        <item>29</item>
         <item>35</item>
-        <item>47</item>
+        <item>35</item>
+        <item>41</item>
+        <item>41</item>
+        <item>49</item>
+        <item>54</item>
+        <item>60</item>
+        <item>67</item>
         <item>75</item>
-        <item>114</item>
-        <item>130</item>
-        <item>152</item>
-        <item>175</item>
-        <item>200</item>
+        <item>84</item>
+        <item>94</item>
+        <item>106</item>
+        <item>119</item>
+        <item>135</item>
+        <item>154</item>
+        <item>174</item>
+        <item>197</item>
+        <item>225</item>
+        <item>255</item>
         <item>255</item>
     </integer-array>
 
@@ -77,21 +92,8 @@
     <!-- If this is true, the screen will come on when you unplug usb/power/whatever. -->
     <bool name="config_unplugTurnsOnScreen">true</bool>
 
-    <!-- Does the notification LED support multiple colors?
-         Used to decide if the user can change the colors -->
-    <bool name="config_multiColorNotificationLed">false</bool>
-
-    <!-- Does the battery LED support multiple colors?
-         Used to decide if the user can change the colors -->
-    <bool name="config_multiColorBatteryLed">false</bool>    
-    <!--Used to decide if we show pulse settings -->
-    <bool name="config_ledCanPulse">true</bool>
-
     <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
     <bool name="config_intrusiveNotificationLed">true</bool>
-
-    <!-- Is the battery LED intrusive? Used to decide if there should be a disable option -->
-    <bool name="config_intrusiveBatteryLed">true</bool>
 
     <!-- Vibrator pattern for feedback about a long screen/key press -->
     <integer-array name="config_longPressVibePattern">
@@ -134,20 +136,6 @@
          For example, a device with Home, Back and Menu keys would set this
          config to 7. -->
     <integer name="config_deviceHardwareKeys">65</integer>
-
-    <!-- Hardware keys present on the device with the ability to wake, stored as a bit field.
-         This integer should equal the sum of the corresponding value for each
-         of the following keys present:
-             1 - Home
-             2 - Back
-             4 - Menu
-             8 - Assistant (search)
-            16 - App switch
-            32 - Camera
-            64 - Volume rocker
-         For example, a device with Home, Back and Menu keys would set this
-         config to 7. -->
-    <integer name="config_deviceHardwareWakeKeys">65</integer>
 
     <!-- Control the behavior when the user long presses the home button.
             0 - Nothing

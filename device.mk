@@ -124,7 +124,8 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    Snap
+    Camera2 \
+    CameraGallery
 
 # Connectivity Engine support (CNE)
 PRODUCT_PACKAGES += \
@@ -142,21 +143,21 @@ PRODUCT_PACKAGES += \
     libtinyxml
 
 # Doze mode
-PRODUCT_PACKAGES += \
-    ZukDoze
+#PRODUCT_PACKAGES += \
+#    ZukDoze
 
 # Fingerprint sensor
 PRODUCT_PACKAGES += \
-    fingerprintd \
-    ZukPocketMode
+    fingerprintd
+#    ZukPocketMode
 
 # For android_filesystem_config.h
 PRODUCT_PACKAGES += \
     fs_config_files
 
-# Gello
+# Browser
 PRODUCT_PACKAGES += \
-    Gello
+    Browser2
 
 # GPS
 PRODUCT_PACKAGES += \
